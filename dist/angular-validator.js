@@ -244,7 +244,7 @@ angular.module('angularValidator').directive('angularValidator', ['$injector', '
 
 
                 function generateErrorMessage(messageText) {
-                    return "<label class='control-label has-error validationMessage'>" + scope.$eval(messageText) + "</label>";
+                    return "<p class='help is-danger validationMessage'>" + scope.$eval(messageText) + "</p>";
                 }
 
 
@@ -260,7 +260,7 @@ angular.module('angularValidator').directive('angularValidator', ['$injector', '
                 }
 
 
-                // Adds and removes .has-error class to both the form element and the form element's parent
+                // Adds and removes .is-danger class to both the form element and the form element's parent
                 // depending on the validity of the element and the submitted state of the form
                 function updateValidationClass(element) {
                     // Make sure the element is a form field and not a button for example
@@ -270,20 +270,20 @@ angular.module('angularValidator').directive('angularValidator', ['$injector', '
                     }
                     var formField = scopeForm[element.name];
 
-                    // This is extra for users wishing to implement the .has-error class on the field itself
-                    // instead of on the parent element. Note that Bootstrap requires the .has-error class to be on the parent element
-                    angular.element(element).removeClass('has-error');
-                    angular.element(element.parentNode).removeClass('has-error');
+                    // This is extra for users wishing to implement the .is-danger class on the field itself
+                    // instead of on the parent element. Note that Bootstrap requires the .is-danger class to be on the parent element
+                    angular.element(element).removeClass('is-danger');
+                    angular.element(element.parentNode).removeClass('is-danger');
 
 
                     // Only add/remove validation classes if the field is $dirty or the form has been submitted
                     if (formField.$dirty || scopeForm.submitted) {
                         if (formField.$invalid) {
-                            angular.element(element.parentNode).addClass('has-error');
+                            angular.element(element.parentNode).addClass('is-danger');
 
-                            // This is extra for users wishing to implement the .has-error class on the field itself
-                            // instead of on the parent element. Note that Bootstrap requires the .has-error class to be on the parent element
-                            angular.element(element).addClass('has-error');
+                            // This is extra for users wishing to implement the .is-danger class on the field itself
+                            // instead of on the parent element. Note that Bootstrap requires the .is-danger class to be on the parent element
+                            angular.element(element).addClass('is-danger');
                         }
                     }
                 }
