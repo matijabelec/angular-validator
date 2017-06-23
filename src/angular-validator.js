@@ -244,7 +244,7 @@ angular.module('angularValidator').directive('angularValidator', ['$injector', '
 
 
                 function generateErrorMessage(messageText) {
-                    return "<p class="help is-danger validationMessage'>" + scope.$eval(messageText) + "</p>";
+                    return "<p class='help is-danger validationMessage'>" + scope.$eval(messageText) + "</p>";
                 }
 
 
